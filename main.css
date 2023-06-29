@@ -1,0 +1,59 @@
+body {
+    margin: none;
+    background-color: #dac9d8;
+    opacity: o.2;
+}
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+header p {
+    display: inline;
+    padding: 30px;
+    font-size: small;
+}
+header {
+    text-align:end;
+    background-color: beige;
+    height: 60px;
+}
+div.header {
+    padding: 20px 0px 20px;
+}
+div.mainpg {
+    width: 80%;
+    height: 200px;
+    background-color: rgb(161, 143, 168);
+    margin-top: 50px;
+    margin-left:30px;
+    padding: 30px;
+    position: relative;
+}
+div.mainpg h1 {
+    width: 50%;
+    font-size: 35px;
+    font-family:'Courier New', Courier, monospace;
+}
+div.mainpg img {
+    width:250px;
+    height:260px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+div.login {
+    text-align: center;
+    background-color: rgb(152, 160, 236);
+    height: 200px;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+div.login p{
+    font-size: 30px;
+    font-family:Verdana,Tahoma, sans-serif;
+}
+div.login button {
+    background-color: rgb(129, 221, 224);
+    padding: 10px;
+    border-radius: 15px;
+}
