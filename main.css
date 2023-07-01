@@ -1,0 +1,73 @@
+body {
+    margin: none;
+    background-color: #dac9d8;
+    opacity: o.2;
+}
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+header {
+    text-align:end;
+    background-color: beige;
+    height: 60px;
+    margin-bottom: 30px;
+}
+header p {
+    display: inline;
+    padding: 30px;
+    font-size: small;
+}
+div.header {
+    padding: 20px 0px 20px;
+}
+div.mainpg {
+    margin: auto;
+    width: 70%;
+    height: 70%;
+    background-color: rgb(161, 143, 168);
+    padding: 50px;
+}
+div.mainpg img {
+    display: inline;
+}
+div.mainpg h1 {
+    width: 50%;
+    font-size: 40px;
+    font-family:'Courier New', Courier, monospace;
+}
+div.login {
+    text-align: center;
+    background-color: rgb(152, 160, 236);
+    height: auto;
+    padding: 20px;
+    margin-top: 20px;
+}
+div.login p{
+    font-size: 30px;
+    font-family:Verdana,Tahoma, sans-serif;
+}
+div.login button {
+    background-color: rgb(129, 221, 224);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 20px 5px 0px;
+}
+div.login input{
+    border-radius: 20px;
+    padding: 5px;
+}
+div.login a {
+    margin: 30px auto 20px;
+    width:fit-content;
+}
+div.login a:link, a:visited{
+    background-color: rgb(235, 132, 132, 0.3);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    display: block;
+}
+div.login a:hover {
+    background-color: rgb(152, 160, 236);
+    color:black;
+}
