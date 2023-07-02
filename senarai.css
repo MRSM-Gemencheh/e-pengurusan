@@ -1,0 +1,70 @@
+body {
+    background-image: url("http://gemencheh.mrsm.edu.my/data/index/slider-1/img-3.jpg"); /* The image used */
+    background-color: rgb(204, 204, 204); /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size:cover; /* x puas hati */
+    font-family: Muli, sans-serif;
+    position: relative;
+}
+.focus{
+    font-family: "Space Mono", monospace;
+}
+header {
+    text-align:end;
+    background-color: beige;
+    margin-bottom: 30px;
+    padding: 20px 0px 20px;
+    position: sticky;
+    top: 0;
+}/* icon xde lg*/
+header p {
+    display: inline;
+    padding: 30px;
+    font-size: small;
+}
+main {
+    text-align: center;
+}
+.latar {
+    padding: 20px;
+    color:darkblue;
+}
+section {
+    background-color: rgb(220, 238, 245, 0.7);
+    padding: 20px;
+}
+.main h1 {
+    background-color: bisque;
+    border-radius: 30px;
+    width:fit-content;
+    padding: 10px;
+    margin:auto;
+}
+article{
+    background-color: bisque;
+    padding: 20px;
+    border-radius: 30px;
+    width:fit-content; 
+    margin: 50px auto;
+}
+article h5,h3{
+    display:inline;
+    margin: 10px;
+    text-align: left;
+}
+div.contain a {
+    width:fit-content;
+    margin: 20px;
+}
+div.contain  a:link, a:visited{
+    background-color: rgba(250, 108, 108, 0.603);
+    color: rgb(18, 4, 70);
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+}
+div.contain a:hover {
+    background-color: rgb(152, 160, 236);
+    color:rgb(11, 227, 235);
+}
