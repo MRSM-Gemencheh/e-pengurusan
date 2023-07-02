@@ -1,5 +1,5 @@
 body {
-    margin: none;
+    margin: 0px;
     background-color: #dac9d8;
     opacity: o.2;
 }
@@ -11,7 +11,7 @@ header {
     background-color: beige;
     height: 60px;
     margin-bottom: 30px;
-}
+}/* icon xde lg*/
 header p {
     display: inline;
     padding: 30px;
@@ -22,18 +22,23 @@ div.header {
 }
 div.mainpg {
     margin: auto;
-    width: 70%;
-    height: 70%;
+    width: 80%;
+    height: auto;/*x settle lg*/
     background-color: rgb(161, 143, 168);
-    padding: 50px;
+    padding: 30px 12px;
+    position:relative;
 }
 div.mainpg img {
-    display: inline;
+    position: absolute;
+    top:0px;
+    right:0px;
+    height:100%;
+    width: 50%;
 }
 div.mainpg h1 {
     width: 50%;
-    font-size: 40px;
     font-family:'Courier New', Courier, monospace;
+    font-size:30px;
 }
 div.login {
     text-align: center;
