@@ -4,4 +4,13 @@ A Computer Project for Technova 2023. E-Pengurusan aims to help teachers by maki
 
 Developed in Vanilla JS with a Firebase backend.
 
+TODO:
+
+1. Ambil data drpd Firestore
+2. Untuk setiap data daripada senarai program, createElement untuk data tu
+2.2 
+3. Append dekat file HTML senarai.html
+
+
+
 
