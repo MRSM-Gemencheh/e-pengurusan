@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, getAuth, signOut } from "firebase/auth";
+import { getFirestore, collection, query, orderBy, getDocs } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -26,6 +27,20 @@ const analytics = getAnalytics(app);
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Code to execute when the DOM content is loaded
+  let programsContainer = document.getElementById('programsContainer')
+  // Use the element
+  let welcomeText = document.getElementById('welcomeText')
+
+  const signInButton = document.getElementById('signInButton');
+
+  const signOutButton = document.getElementById('signOutButton');
+
+  return programsContainer, welcomeText, signInButton, signOutButton
+});
+
 getRedirectResult(getAuth())
 .then((result) => {
   // This gives you a Google Access Token. You can use it to access Google APIs.
@@ -37,7 +52,12 @@ getRedirectResult(getAuth())
   // IdP data available using getAdditionalUserInfo(result)
   // ...
 
+  welcomeText.textContent = "Selamat datang! Berjaya log masuk sebagai: " + result.user.displayName
+  signInButton.style.display = "none"
+
+
   console.log("Sign in successful! Signed in as: " + result.user.displayName)
+
 }).catch((error) => {
   // Handle Errors here.
   const errorCode = error.code;
@@ -61,7 +81,6 @@ function signTheUserIn() {
 }
 
 document.body.onload = function() {
-  const signInButton = document.getElementById('signInButton');
 
   signInButton.addEventListener('click', () => {
     console.log("Sign in button clicked!")
@@ -69,13 +88,11 @@ document.body.onload = function() {
   })
 
 
-
-  
-  const signOutButton = document.getElementById('signOutButton');
   
   signOutButton.addEventListener('click', () => { 
   
     signOut(auth).then(() => {
+      location.reload()
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.
@@ -84,4 +101,48 @@ document.body.onload = function() {
   })
 }
 
+// Fetch Program Names from Firestore
+
+const db = getFirestore(app);
+
+// Create a reference to the programs collection
+
+const programsRef = collection(db, 'senaraiProgram');
+
+// Create a query against the collection
+
+const programsQuery = query(programsRef, orderBy('nama'));
+
+// Get the documents from the query
+
+const programsSnapshot = await getDocs(programsQuery);
+
+// For every program, create a h3 element with the program name as the text content
+
+// Wait for page load before fetching the element
+
+
+
+programsSnapshot.forEach((doc) => {
+
+    console.log(doc.data())
+
+    const programName = doc.data().nama;
+    const programElement = document.createElement('h1');
+
+    const programDate = doc.data().tarikh;
+    const programDateElement = document.createElement('h3');
+    
+    programElement.textContent = programName;
+    programElement.className = 'title is-5'
+    programDateElement.textContent = programDate;
+    programDateElement.className = 'subtitle'
+
+
+    programsContainer.appendChild(programElement);
+    programsContainer.appendChild(programDateElement);
+
+
+    }
+);
 

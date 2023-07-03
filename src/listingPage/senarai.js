@@ -33,6 +33,14 @@ const programsSnapshot = await getDocs(programsQuery);
 
 // For every program, create a h3 element with the program name as the text content
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Code to execute when the DOM content is loaded
+  let programsContainer = document.getElementById('programsContainer')
+  // Use the element
+
+  return programsContainer
+});
+
 programsSnapshot.forEach((doc) => {
 
     console.log(doc.data())
@@ -43,13 +51,25 @@ programsSnapshot.forEach((doc) => {
     const programDate = doc.data().tarikh;
     const programDateElement = document.createElement('h3');
 
+    const kemaskiniElement = document.createElement('button')
+    kemaskiniElement.className = 'button is-link mx-4'
+    kemaskiniElement.textContent = "Kemaskini"
+    
+    const padamElement = document.createElement('button')
+    padamElement.className = 'button is-danger'
+    padamElement.textContent = "Padam"
+
     
     programElement.textContent = programName;
+    programElement.className = 'title is-5 mt-5'
     programDateElement.textContent = programDate;
+    programDateElement.className = 'subtitle'
 
 
-    document.body.appendChild(programElement);
-    document.body.appendChild(programDateElement);
+    programsContainer.appendChild(programElement);
+    programsContainer.appendChild(programDateElement);
+    programsContainer.appendChild(kemaskiniElement);
+    programsContainer.appendChild(padamElement);
 
 
     }
