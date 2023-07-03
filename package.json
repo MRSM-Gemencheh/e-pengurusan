@@ -4,6 +4,7 @@
   "description": "Pembahagi tugas guru bagi program, kelab dan persatuan di MRSM",
   "main": "index.js",
   "scripts": {
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/MRSM-Gemencheh/pembahagi-jk-program/issues"
   },
-  "homepage": "https://github.com/MRSM-Gemencheh/pembahagi-jk-program#readme"
+  "homepage": "https://github.com/MRSM-Gemencheh/pembahagi-jk-program#readme",
+  "devDependencies": {
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "firebase": "^9.23.0"
+  }
 }
