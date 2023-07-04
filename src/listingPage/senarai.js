@@ -16,10 +16,10 @@ const firebaseConfig = {
     // Code to execute when the DOM content is loaded
   
     const signInButton = document.getElementById('signInButton');
-  
     const signOutButton = document.getElementById('signOutButton');
+    let userName = document.getElementById('userName')
   
-    return signInButton, signOutButton
+    return signInButton, signOutButton, userName
   });
 
 
@@ -37,6 +37,9 @@ auth.onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in, you can access the user object
     console.log(user);
+
+        // welcomeText.textContent = "Selamat datang! Berjaya log masuk sebagai: " + user.displayName
+        userName.textContent = user.displayName
 
     signInButton.style.display = "none"
     signOutButton.style.display = "block"
@@ -89,10 +92,12 @@ programsSnapshot.forEach((doc) => {
     const kemaskiniElement = document.createElement('button')
     kemaskiniElement.className = 'button is-link mx-4'
     kemaskiniElement.textContent = "Kemaskini"
+    kemaskiniElement.id = doc.id
     
     const padamElement = document.createElement('button')
     padamElement.className = 'button is-danger'
     padamElement.textContent = "Padam"
+    padamElement.id = doc.id
 
     
     programElement.textContent = programName;

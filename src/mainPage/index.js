@@ -29,16 +29,14 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Code to execute when the DOM content is loaded
+
   let programsContainer = document.getElementById('programsContainer')
-  // Use the element
   let welcomeText = document.getElementById('welcomeText')
-
   const signInButton = document.getElementById('signInButton');
-
   const signOutButton = document.getElementById('signOutButton');
+  let userName = document.getElementById('userName')
 
-  return programsContainer, welcomeText, signInButton, signOutButton
+  return programsContainer, welcomeText, signInButton, signOutButton, userName
 });
 
 getRedirectResult(getAuth())
@@ -53,9 +51,6 @@ getRedirectResult(getAuth())
   // ...
 
   welcomeText.textContent = "Selamat datang! Berjaya log masuk sebagai: " + result.user.displayName
-
-
-
   console.log("Sign in successful! Signed in as: " + result.user.displayName)
 
 }).catch((error) => {
@@ -81,6 +76,8 @@ auth.onAuthStateChanged(function(user) {
     // User is signed in, you can access the user object
     console.log(user);
 
+    // welcomeText.textContent = "Selamat datang! Berjaya log masuk sebagai: " + user.displayName
+    userName.textContent = user.displayName
     signInButton.style.display = "none"
     signOutButton.style.display = "block"
   } else {
