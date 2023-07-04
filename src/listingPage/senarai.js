@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, query, orderBy, getDocs } from "firebase/firestore";
+import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, getAuth, signOut } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC_ow3SQ-q23fH6a0-uRx5C_VhemrAHRI8",
@@ -11,9 +12,40 @@ const firebaseConfig = {
     measurementId: "G-5GNDNEVXMJ"
   };
 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Code to execute when the DOM content is loaded
+  
+    const signInButton = document.getElementById('signInButton');
+  
+    const signOutButton = document.getElementById('signOutButton');
+  
+    return signInButton, signOutButton
+  });
+
+
 // Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+
+// Get current logged in user
+
+const user = auth.currentUser;
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in, you can access the user object
+    console.log(user);
+
+    signInButton.style.display = "none"
+    signOutButton.style.display = "block"
+  } else {
+    // User is signed out
+    console.log("User is not logged in");
+  }
+});
+
 
 // Fetch Program Names from Firestore
 
@@ -43,12 +75,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 programsSnapshot.forEach((doc) => {
 
-    console.log(doc.data())
+    // console.log(doc.data())
 
     const programName = doc.data().nama;
     const programElement = document.createElement('h1');
 
     const programDate = doc.data().tarikh;
+    const date = new Date(programDate.seconds * 1000);
+    let dateFormat = date.getHours() + ":" + date.getMinutes() + ", "+ date.toDateString();
+
     const programDateElement = document.createElement('h3');
 
     const kemaskiniElement = document.createElement('button')
@@ -62,7 +97,7 @@ programsSnapshot.forEach((doc) => {
     
     programElement.textContent = programName;
     programElement.className = 'title is-5 mt-5'
-    programDateElement.textContent = programDate;
+    programDateElement.textContent = dateFormat;
     programDateElement.className = 'subtitle'
 
 
@@ -70,7 +105,6 @@ programsSnapshot.forEach((doc) => {
     programsContainer.appendChild(programDateElement);
     programsContainer.appendChild(kemaskiniElement);
     programsContainer.appendChild(padamElement);
-
 
     }
 );

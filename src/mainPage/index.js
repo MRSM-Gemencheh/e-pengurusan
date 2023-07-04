@@ -53,7 +53,7 @@ getRedirectResult(getAuth())
   // ...
 
   welcomeText.textContent = "Selamat datang! Berjaya log masuk sebagai: " + result.user.displayName
-  signInButton.style.display = "none"
+
 
 
   console.log("Sign in successful! Signed in as: " + result.user.displayName)
@@ -74,7 +74,20 @@ auth.languageCode = 'en';
 // firebase.auth().useDeviceLanguage();
 
 // Additional scope requests can be passed as an array of strings.
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+// provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in, you can access the user object
+    console.log(user);
+
+    signInButton.style.display = "none"
+    signOutButton.style.display = "block"
+  } else {
+    // User is signed out
+    console.log("User is not logged in");
+  }
+});
 
 function signTheUserIn() {  
   signInWithRedirect(auth, provider);
@@ -83,7 +96,7 @@ function signTheUserIn() {
 document.body.onload = function() {
 
   signInButton.addEventListener('click', () => {
-    console.log("Sign in button clicked!")
+    console.log("Sign in process initiated!")
     signTheUserIn();
   })
 
@@ -125,17 +138,21 @@ const programsSnapshot = await getDocs(programsQuery);
 
 programsSnapshot.forEach((doc) => {
 
-    console.log(doc.data())
+    // console.log(doc.data())
 
     const programName = doc.data().nama;
     const programElement = document.createElement('h1');
 
     const programDate = doc.data().tarikh;
+    const date = new Date(programDate.seconds * 1000);
+    let dateFormat = date.getHours() + ":" + date.getMinutes() + ", "+ date.toDateString();
     const programDateElement = document.createElement('h3');
+
+    
     
     programElement.textContent = programName;
-    programElement.className = 'title is-5'
-    programDateElement.textContent = programDate;
+    programElement.className = 'title is-5 mt-5'
+    programDateElement.textContent = dateFormat;
     programDateElement.className = 'subtitle'
 
 

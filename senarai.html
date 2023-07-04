@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senarai Program</title>
+    <title>Senarai Program | e-Pengurusan</title>
 
     <link rel="stylesheet" href="./deps/bulma.min.css">
 </head>
@@ -22,7 +22,7 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             <button class="button is-primary" id="signInButton">Log Masuk</button>
-                            <button class="button is-danger" id="signOutButton">Log Keluar</button>
+                            <button style="display: none;" class="button is-danger" id="signOutButton">Log Keluar</button>
                         </div>
                     </div>
                 </div>
@@ -41,10 +41,24 @@
         </div>
     </section>
 
+    <div class="block"></div>
+
+    <article class="message is-warning">
+        <div class="message-header">
+          <p>Perhatian</p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+          Anda tidak log masuk sebagai salah satu akaun ahli pihak pengurusan maktab. Sila log masuk untuk mengemaskini jawatankuasa untuk mana-mana program.
+        </div>
+      </article>
+
     <hr>
 
     <div class="box" id="programsContainer">
         <h2 class="title">Program Maktab yang Akan Datang:</h2>
+
+        <button class="button is-primary"><a href="./cipta.html">Cipta Program</a></button>
 
     </div>
 
