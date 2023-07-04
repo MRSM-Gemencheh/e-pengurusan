@@ -53,11 +53,11 @@ const db = getFirestore(app);
 
 // Create a reference to the programs collection
 
-const programsRef = collection(db, 'senaraiProgram');
+const programsRef = collection(db, 'program');
 
 // Create a query against the collection
 
-const programsQuery = query(programsRef, orderBy('nama'));
+const programsQuery = query(programsRef, orderBy('tarikh'));
 
 // Get the documents from the query
 
@@ -77,7 +77,7 @@ programsSnapshot.forEach((doc) => {
 
     // console.log(doc.data())
 
-    const programName = doc.data().nama;
+    const programName = doc.data().namaProgram;
     const programElement = document.createElement('h1');
 
     const programDate = doc.data().tarikh;

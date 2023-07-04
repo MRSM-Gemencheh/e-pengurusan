@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cipta Program | HTML</title>
 
+    <link rel="icon" href="./icon.png">
     <link rel="stylesheet" href="./deps/bulma.min.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="container">
@@ -20,7 +23,8 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             <button class="button is-primary" id="signInButton">Log Masuk</button>
-                            <button style="display: none" class="button is-danger" id="signOutButton">Log Keluar</button>
+                            <button style="display: none" class="button is-danger" id="signOutButton">Log
+                                Keluar</button>
                         </div>
                     </div>
                 </div>
@@ -34,14 +38,100 @@
                 Cipta Program
             </p>
             <p class="subtitle" id="welcomeText">
-                
+
             </p>
         </div>
     </section>
 
-
     <hr>
 
+    <div class="mx-5" action="">
+        <div class="field">
+            <label class="label">Nama Program</label>
+            <div class="control">
+                <input class="input" type="text" id="namaProgramIP" placeholder="e.g Sambutan Hari Raya">
+            </div>
+        </div>
+    
+        <div class="field">
+            <label class="label">Anjuran</label>
+            <div class="control">
+                <input class="input" type="text" id="anjuranIP" placeholder="e.g Badan Wakil Pelajar">
+            </div>
+        </div>
+    
+        <div class="field">
+            <label class="label">Lokasi</label>
+            <div class="control">
+                <input class="input" type="text" id="lokasiIP" placeholder="e.g MRSM Gemencheh">
+            </div>
+        </div>
+    
+        <div class="field">
+            <label class="label">Tarikh</label>
+            <div class="control">
+                <input class="input" id="tarikhIP" type="datetime-local">
+            </div>
+        </div>
+    
+        <div class="field">
+            <label for="" class="label">Jawatan dalam Program:</label>
+            <div class="control">
+                <input type="checkbox" id="penyelaras" name="" value="">
+                <label for="penyelaras">Penyelaras</label><br>
+
+                <input type="checkbox" id="setiausaha" name="" value="">
+                <label for="setiausaha">Setiausaha</label><br>
+
+                <input type="checkbox" id="bendahari" name="" value="">
+                <label for="bendahari">Bendahari</label><br>
+
+                <input type="checkbox" id="ajk-aktiviti-modul" name="" value="">
+                <label for="ajk-aktiviti-modul">AJK Aktiviti / Modul</label><br>
+
+                <input type="checkbox" id="ajk-kawalan-pelajar" name="" value="">
+                <label for="ajk-kawalan-pelajar">AJK Kawalan Pelajar</label><br>
+
+                <input type="checkbox" id="ajk-pendaftaran" name="" value="">
+                <label for="ajk-pendaftaran">AJK Pendaftaran</label><br>
+
+                <input type="checkbox" id="ajk-jamuan" name="" value="">
+                <label for="ajk-jamuan">AJK Jamuan</label><br>
+
+                <input type="checkbox" id="ajk-peralatan" name="" value="">
+                <label for="ajk-peralatan">AJK Peralatan</label><br>
+
+                <input type="checkbox" id="ajk-persiapan-tempat" name="" value="">
+                <label for="ajk-persiapan-tempat">AJK Persiapan Tempat</label><br>
+
+                <input type="checkbox" id="ajk-hadiah" name="" value="">
+                <label for="ajk-hadiah">AJK Hadiah</label><br>
+
+                <input type="checkbox" id="ajk-dokumentasi" name="" value="">
+                <label for="ajk-dokumentasi">AJK Dokumentasi</label><br>
+
+                <input type="checkbox" id="ajk-publisiti" name="" value="">
+                <label for="ajk-publisiti">AJK Publisiti</label><br>
+
+                <input type="checkbox" id="ajk-teknikal" name="" value="">
+                <label for="ajk-teknikal">AJK Teknikal</label><br>
+
+            </div>
+        </div>
+    
+    
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" id="submitButton">Hantar</button>
+            </div>
+            <div class="control">
+                <button class="button is-link is-light"><a href="./senarai.html">Batal</a></button>
+            </div>
+        </div>
+    </div>
+
+    
     <script type="module" defer src="./dist/ciptaPage.bundle.js"></script>
 </body>
+
 </html>
