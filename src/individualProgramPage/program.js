@@ -47,29 +47,57 @@ auth.onAuthStateChanged(function (user) {
 });
 
 
+// Get the document ID from the URL
 
 const queryString = window.location.search;
-
-console.log(queryString);
-
 const urlParams = new URLSearchParams(queryString);
-
-
 const docID = urlParams.get('docID')
-console.log(docID);
-
-// Get the program name from the document ID
 
 const db = getFirestore(app);
 
+// Get the details about the program from the 'program' collection in Firestore using the document ID
+
 const programRef = doc(db, "program", docID);
+const programDocSnap = getDoc(programRef);
 
-const docSnap = getDoc(programRef);
+// Get the list of teachers from the 'guru' collection in Firestore
 
-docSnap.then((doc) => {
+const guruRef = collection(db, "guru");
+const guruQuery = query(guruRef, orderBy("nama"));
+const guruDocSnap = getDocs(guruQuery);
+
+// From the 'guru' collection snapshot, store all of the names in an array
+
+let guruArray = []
+
+guruDocSnap.then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data().nama);
+        guruArray.push(doc.data().nama)
+    });
+});
+
+// From the snapshot of the document, do the following:
+// 1. Display the program name
+// 2. Display the list of jawatan in the program
+// 3. For every jawatan, create a dropdown listing all of the teacher's name in the 'guru' collection from Firebase
+
+let jawatanArray = []
+
+
+programDocSnap.then((doc) => {
     if (doc.exists()) {
         console.log("Document data:", doc.data());
         programName.textContent = doc.data().namaProgram
+
+        // Store the list of jawatan in an array
+
+
+        for (let i = 0; i < doc.data().jawatan.length; i++) {
+            jawatanArray.push(doc.data().jawatan[i])
+        }
+
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -79,3 +107,7 @@ docSnap.then((doc) => {
     console.log("Error getting document:", error);
 }
 );
+
+
+// For every jawatan, display the jawatan name and create a dropdown listing all of the teacher's name in the 'guru' collection from Firebase
+// Append the jawatan name and the dropdown to the 
