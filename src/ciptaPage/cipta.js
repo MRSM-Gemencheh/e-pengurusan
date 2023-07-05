@@ -62,6 +62,13 @@ submitButton.addEventListener("click", async function () {
   let lokasiX = lokasiIP.value
   let tarikhX = tarikhIP.value
 
+  // Convert tarikhX to unix seconds before sending to Firebase
+
+  tarikhX = new Date(tarikhX).getTime() / 1000
+
+  console.log(tarikhX)
+
+
   // Retrieve the checked checkboxes
   let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
   let jawatanX = Array.from(checkboxes).map(checkbox => checkbox.id);
@@ -76,5 +83,11 @@ submitButton.addEventListener("click", async function () {
     jawatan: jawatanX
   });
   console.log("Document written with ID: ", docRef.id);
+
+  // Back to previous page
+
+  alert("Program berjaya dicipta!")
+
+  window.history.back();
 
 });
