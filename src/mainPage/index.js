@@ -139,7 +139,7 @@ programsSnapshot.forEach((doc) => {
     const programElement = document.createElement('h1');
 
     const programDate = doc.data().tarikh;
-    const date = new Date(programDate.seconds * 1000);
+    const date = new Date(programDate * 1000);
     let dateFormat = date.getHours() + ":" + date.getMinutes() + ", "+ date.toDateString();
     const programDateElement = document.createElement('h3');
 

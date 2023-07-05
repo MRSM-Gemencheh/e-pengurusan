@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, orderBy, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, query, orderBy, getDocs, deleteDoc, doc, getDoc } from "firebase/firestore";
+import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, getAuth, signOut, linkWithCredential } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -16,9 +17,11 @@ const firebaseConfig = {
 document.addEventListener('DOMContentLoaded', function () {
 
     const programName = document.getElementById('programName');
+    const signInButton = document.getElementById('signInButton');
+    const signOutButton = document.getElementById('signOutButton');
 
 
-    return programName
+    return programName, signInButton, signOutButton
 });
 
 // Initialize Firebase
@@ -26,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
-
-
 
 auth.onAuthStateChanged(function (user) {
   if (user) {
@@ -48,6 +49,7 @@ auth.onAuthStateChanged(function (user) {
 
 
 const queryString = window.location.search;
+
 console.log(queryString);
 
 const urlParams = new URLSearchParams(queryString);
@@ -55,3 +57,25 @@ const urlParams = new URLSearchParams(queryString);
 
 const docID = urlParams.get('docID')
 console.log(docID);
+
+// Get the program name from the document ID
+
+const db = getFirestore(app);
+
+const programRef = doc(db, "program", docID);
+
+const docSnap = getDoc(programRef);
+
+docSnap.then((doc) => {
+    if (doc.exists()) {
+        console.log("Document data:", doc.data());
+        programName.textContent = doc.data().namaProgram
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}
+).catch((error) => {
+    console.log("Error getting document:", error);
+}
+);

@@ -34,8 +34,6 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 
-
-
 auth.onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in, you can access the user object
@@ -78,7 +76,7 @@ programsSnapshot.forEach((doc) => {
   const programNameElement = document.createElement('h1');
 
   const programDate = doc.data().tarikh;
-  const date = new Date(programDate.seconds * 1000);
+  const date = new Date(programDate * 1000);
   let dateFormat = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
 
   const programDateElement = document.createElement('h3');
