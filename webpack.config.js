@@ -5,7 +5,8 @@ module.exports = {
     entry: {
       mainPage: './src/mainPage/index.js',
       listingPage: './src/listingPage/senarai.js',
-      ciptaPage: './src/ciptaPage/cipta.js'
+      ciptaPage: './src/ciptaPage/cipta.js',
+      individualProgramPage: './src/individualProgramPage/program.js',
     },
     output: {
         filename: '[name].bundle.js',
