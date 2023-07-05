@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, orderBy, getDocs, deleteDoc, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, query, orderBy, getDocs, deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, getAuth, signOut, linkWithCredential } from "firebase/auth";
 
 const firebaseConfig = {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Store the list of jawatan in an array
         for (let i = 0; i < programDocSnap.data().jawatan.length; i++) {
-            jawatanArray.push(programDocSnap.data().jawatan[i]);
+            jawatanArray.push(programDocSnap.data().jawatan[i].jawatan);
         }
 
         // Create the dropdowns after fetching the necessary data
@@ -88,7 +88,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             blockElement.className = "mt-5"
             mainForm.appendChild(blockElement)
 
-            const jawatanName = document.createElement('h3');
+            let jawatanName = document.createElement('h3');
+            // Capitalize and remove dashes before setting it as the textcontent
+            jawatanArray[i] = jawatanArray[i].replace(/-/g, ' ');
+            jawatanArray[i] = jawatanArray[i].replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
             jawatanName.textContent = jawatanArray[i];
             blockElement.appendChild(jawatanName);
 
@@ -161,5 +164,47 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Append the 'div' with the class 'field is-grouped mt-5' to the 'mainForm'
         mainForm.appendChild(div1);
+
+
+        // When the user clicks the button send the data in the form to firestore
+        // Update the document of the 'program' collection to include a new array named 'pengisiTugas'
+        // The array should have the jawatan name and who is going to fill in the jawatan based on the selected dropdown value
+
+        // Add event listener to the submit button
+        submitButton.addEventListener('click', async function () {
+            // Create an array to store the pengisiTugas data
+            const pengisiTugasArray = [];
+
+            // Iterate over the jawatanArray to get the selected values from the dropdowns
+            for (let i = 0; i < jawatanArray.length; i++) {
+                const guruDropdown = document.getElementById('guruDropdown' + i);
+                const selectedTeacher = guruDropdown.value;
+
+                // Create an object with the jawatan name and selected teacher
+                const pengisiTugas = {
+                    jawatan: jawatanArray[i],
+                    guru: selectedTeacher
+                };
+
+                // Add the pengisiTugas object to the array
+                pengisiTugasArray.push(pengisiTugas);
+            }
+
+            // Update the document in the 'program' collection
+            try {
+                await updateDoc(programRef, {
+                    pengisiTugas: pengisiTugasArray
+                });
+                console.log("Document successfully updated!");
+            } catch (error) {
+                console.error("Error updating document: ", error);
+            }
+        });
+
+
+
+
+
+
     }
 });

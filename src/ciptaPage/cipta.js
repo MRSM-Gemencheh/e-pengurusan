@@ -68,20 +68,42 @@ submitButton.addEventListener("click", async function () {
 
   console.log(tarikhX)
 
+// Define the points for each jawatan
+const jawatanPoints = {
+  penyelaras: 10,
+  setiausaha: 8,
+  bendahari: 6,
+  'ajk-aktiviti-modul': 5,
+  'ajk-kawalan-pelajar': 3,
+  'ajk-pendaftaran': 3,
+  'ajk-jamuan': 3,
+  'ajk-peralatan': 3,
+  'ajk-persiapan-tempat': 3,
+  'ajk-hadiah': 3,
+  'ajk-dokumentasi': 3,
+  'ajk-publisiti': 3,
+  'ajk-teknikal': 3,
+};
 
-  // Retrieve the checked checkboxes
-  let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  let jawatanX = Array.from(checkboxes).map(checkbox => checkbox.id);
+// Retrieve the checked checkboxes
+let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+let jawatanX = Array.from(checkboxes).map(checkbox => {
+  const jawatan = checkbox.id;
+  const points = jawatanPoints[jawatan];
+  return { jawatan, points };
+});
 
-  // Send to Firestore
+console.log(jawatanX)
 
-  const docRef = await addDoc(collection(db, "program"), {
-    namaProgram: namaProgramX,
-    anjuran: anjuranX,
-    lokasi: lokasiX,
-    tarikh: tarikhX,
-    jawatan: jawatanX
-  });
+// Send to Firestore
+const docRef = await addDoc(collection(db, "program"), {
+  namaProgram: namaProgramX,
+  anjuran: anjuranX,
+  lokasi: lokasiX,
+  tarikh: tarikhX,
+  jawatan: jawatanX
+});
+
   console.log("Document written with ID: ", docRef.id);
 
   // Back to previous page
