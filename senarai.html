@@ -3,38 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senarai Program</title>
+    <title>Senarai Program | e-Pengurusan</title>
 
+    <link rel="icon" href="./icon.png">
+
+    <link rel="stylesheet" href="./deps/bulma.min.css">
+
+    <style>
+        a {
+            color: white
+        }
+    </style>
 </head>
 <body>
-    <h1><a href="./index.html">e-Pengurusan</a></h1>
 
-    <h1>Senarai Program</h1>
 
-    <p>Jumlah program terdaftar untuk tahun semasa: </p>
+    <nav class="navbar">
+        <div class="container">
+            <div id="navMenu" class="navbar-menu">
+
+                <div class="navbar-start">
+                    <a class="navbar-item" href="./index.html">e-Pengurusan</a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <p id="userName"></p>
+                    </div>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <button class="button is-primary" id="signInButton">Log Masuk</button>
+                            <button style="display: none;" class="button is-danger" id="signOutButton">Log Keluar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium is-link">
+        <div class="hero-body">
+            <p class="title">
+                Senarai Program
+            </p>
+            <p class="subtitle">
+                Jumlah program terdaftar untuk tahun semasa: 
+            </p>
+        </div>
+    </section>
+
+    <div class="block"></div>
+
+    <article class="message is-warning">
+        <div class="message-header">
+          <p>Perhatian</p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+          Anda tidak log masuk sebagai salah satu akaun ahli pihak pengurusan maktab. Sila log masuk untuk mengemaskini jawatankuasa untuk mana-mana program.
+        </div>
+      </article>
 
     <hr>
 
-    <h2>Program Maktab yang akan datang:</h2>
-    
+    <div class="box" id="programsContainer">
+        <h2 class="title">Program Maktab yang Akan Datang:</h2>
 
-    <!-- <h3>Nama Program</h3>
-    <h5>Tarikh</h5>
-    <button>Kemaskini</button>
-    <button>Padam</button>
+        <button class="button is-primary"><a href="./cipta.html">Cipta Program</a></button>
 
+    </div>
 
-    <h3>Nama Program</h3>
-    <h5>Tarikh</h5>
-    <button>Kemaskini</button>
-    <button>Padam</button>
-
-    <h3>Nama Program</h3>
-    <h5>Tarikh</h5>
-    <button>Kemaskini</button>
-    <button>Padam</button> -->
-
-    <script type="module" src="src/senarai.js"></script>
+    <script type="module" src="./dist/listingPage.bundle.js"></script>
 
 </body>
 </html>

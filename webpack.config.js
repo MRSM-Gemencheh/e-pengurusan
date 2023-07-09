@@ -1,10 +1,15 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
-  mode: 'development',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-};
+    mode: "development",
+    entry: {
+      mainPage: './src/mainPage/index.js',
+      listingPage: './src/listingPage/senarai.js',
+      ciptaPage: './src/ciptaPage/cipta.js',
+      individualProgramPage: './src/individualProgramPage/program.js',
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
+      },
+  };

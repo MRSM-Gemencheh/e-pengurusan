@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemaskini Program | e-Pengurusan</title>
+
+
+    <link rel="icon" href="./icon.png">
+
+    <link rel="stylesheet" href="./deps/bulma.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <div id="navMenu" class="navbar-menu">
+
+                <div class="navbar-start">
+                    <a class="navbar-item" href="./index.html">e-Pengurusan</a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <p id="userName"></p>
+                    </div>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <button class="button is-primary" id="signInButton">Log Masuk</button>
+                            <button style="display: none;" class="button is-danger" id="signOutButton">Log Keluar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium is-link">
+        <div class="hero-body">
+            <p class="title" id="programName">
+                Nama Program
+            </p>
+            <p class="subtitle">
+                Jumlah guru yang akan terlibat dengan program: 
+            </p>
+        </div>
+    </section>
+
+    <div class="block"></div>
+
+    <div class="block mx-5" id="mainForm">
+
+
+    </div>
+
+
+
+    
+    
+
+    <script type="module" src="./dist/individualProgramPage.bundle.js" defer></script>
+</body>
+</html>
